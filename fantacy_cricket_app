@@ -1,0 +1,163 @@
+import random
+import time
+csk={"ritu":8.5,"faf":10,"raina":9,"rayudu":9,"sam":8.5,"dhoni":9.5,"bravo":9,"jadeja":9,"ngidi":8.5,"dchahar":9,"ali":8.5}
+mi={"sharma":10.5,"dkock":9.5,"yadav":9,"kishan":9,"hpandya":9,"polard":8.5,"kpandya":8.5,"rchahar":8.5,"bolt":8.5,"bumrah":9.5,"jayant":8.5}
+
+csk1=['ritu','faf','raina','rayudu','sam','dhoni','bravo','jadeja','ngidi','dchahar','ali']
+mitv=['sharma','dkock','yadav','kishan','hpandya','polard','kpandya','rchahar','bolt','bumrah','jayant']
+
+
+        
+print(csk,"\n")
+print(mi)
+
+n1=str(input("enter player 1 name\n"))
+n2=str(input("enter player 2 name\n"))
+
+
+print("********Join the Head 2 Head Contest ***********")
+print()
+
+print("2 seats  contest . winner takes all-")
+print("both members deposit 20 rupees and one of you will get 35 rupees")
+print()
+print(n1)
+b1=int(input( "enter 20 rupees"))
+print()
+print(n2)
+b2=int(input( "enter 20 rupees"))
+total_b=b1+b2
+
+print("you have 100 credits")
+print(n1, "are you ready to win ? let's select your playes!")
+l=[]
+scores1=[]
+total=100
+while len(l)!=11:
+    a=100
+    x=str(input("enter player name"))
+    if x in csk:
+        a=total-csk[x]
+        if x in l:
+            print("dont'repeat the name")
+            l.remove(x)
+            csk[x]=0
+            a=total #newly added
+    #a=total-csk[x] #newly added
+    elif x in mi:
+        a=total-mi[x]
+        if x in l:
+            print("dont repeat the name")
+            l.remove(x)
+            a = total   # newly added
+            mi[x]=0
+    total=a
+    l.append(x)
+    #print(l)
+    
+    print()
+    print("credits left", total)
+    if total==0:
+        print("no credit left")
+        break
+        
+
+        
+print(n2, "are you ready to win ? let's select your playes!")        
+
+m=[]
+total=100
+while len(m)!=11:
+  b=100
+  y=str(input("enter player name"))
+  if y in csk:
+     b=total-csk[y]
+     if y in m:
+        print("dont'repeat the name")
+        m.remove(y)
+        csk[y]=0
+        b=total-csk[y]
+  if y in mi:
+       b=total-mi[y]
+       if y in m:
+           print("dont repeat the name")
+           m.remove(y)
+  total=b
+  m.append(y)
+  #print(m)
+  print()
+    
+  print("credits left", total)
+  if total==0:
+       print("no credit left")
+       break    
+
+
+print(n1, "selects", l)
+time.sleep(1)
+print(n2, "selects", m)
+time.sleep(1)
+print("good luck", n1 ,"and", n2)
+time.sleep(1)
+
+l1=[]
+l2=[]
+
+
+for i in range(11):
+    c=random.choice(range(100))
+    l1.append(c)
+
+
+for j in range(11):
+    d=random.choice(range(100))
+    l2.append(d)
+n_1=[]
+n_2=[]
+
+for t in range(len(l)):
+    #n=str(input("enter name"))
+    if l[t] in csk1:
+        a=csk1.index(l[t])
+        g=l1[a]
+        print(l[t],"points are ",g)
+        time.sleep(2)
+        n_1.append(g)
+    if l[t] in mitv:
+        b=mitv.index(l[t])
+        h=l2[b]
+        print(l[t], 'scores',h)
+        time.sleep(2)
+        n_1.append(h)
+    
+for p in range(len(m)):
+    #n=str(input("enter name"))
+    if m[p] in csk1:
+        a=csk1.index(m[p])
+        g=l1[a]
+        print(m[p],"scores",g)
+        time.sleep(2)
+        n_2.append(g)
+    if m[p] in mitv:
+        b=mitv.index(m[p])
+        h=l2[b]
+        print(m[p], 'scores',h)
+        time.sleep(2)
+        n_2.append(h)
+print()
+print(n1, 'points are', sum(n_1))
+time.sleep(2)
+print()
+print(n2, 'ponts are', sum(n_2))
+print()
+time.sleep(2)
+if sum(n_1)>sum(n_2):
+    print(n1 , "won ", total_b-5, "rupees")
+else:
+    print(n2 , "won", total_b-5," rupees")
+
+for i in range(len(l)):
+    for j in range(i):
+         if l[i]==m[j]:
+            print('common players are' , l[i])
+            
